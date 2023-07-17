@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #main {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 3px;
+        padding: 2px;
+      }
+      .dynamicRed {
+        background-color: red;
+        height: 100px;
+        width: 100px;
+        margin: 4px;
+        text-align: center;
+        border: 0.5px solid black;
+      }
+
+      .dynamicBlue {
+        background-color: blue;
+        height: 100px;
+        width: 100px;
+        margin: 4px;
+        text-align: center;
+        border: 0.5px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main"></div>
+  </body>
+
+  <script>
+    let main = document.getElementById("main");
+    let arr = [
+      10, 15, 20, 25, 30, 35, 40, 45, 60, 65, 70, 75, 80, 85, 90, 95, 100, 105,
+    ];
+
+    for (let i = 0; i < arr.length - 1; i++) {
+      if (arr[i] % 2 == 0) {
+        const divTag = document.createElement("div");
+        divTag.innerText = arr[i];
+        divTag.classList.add("dynamicRed");
+
+        divTag.addEventListener("click", onCardClick);
+        function onCardClick(e) {
+          let num = e.target.innerText;
+          alert("You clicked on " + num);
+        }
+
+        main.appendChild(divTag);
+      }
+      if (arr[i] % 2 != 0) {
+        const divTag = document.createElement("div");
+        divTag.innerText = arr[i];
+        divTag.classList.add("dynamicBlue");
+        divTag.addEventListener("click", onCardClick);
+        function onCardClick(e) {
+          let num = e.target.innerText;
+          alert("You clicked on " + num);
+        }
+
+        main.appendChild(divTag);
+      }
+    }
+  </script>
+</html>
